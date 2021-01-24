@@ -1,0 +1,36 @@
+server:
+  port: 3344
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          #uri: git@github.com:phoenixhuang2/springcloud-config.git
+          uri: https://github.com/phoenixhuang2/springcloud-config.git
+          search-paths:
+            - springcloud-config
+          username:
+          password:
+      label: master
+  application:
+    name: cloud-config-center
+  rabbitmq:
+    host:
+    port: 5672
+    username:
+    password:
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+      #defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
